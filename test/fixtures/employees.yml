@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 0
+  name: Elena_staff
+  user_name: 201392248
+  password: 123456
+  domain: staff
+  corporate_id: 0
+
+two:
+  name: Elena_manager
+  user_name: 201392249
+  password: 123456
+  domain: manager

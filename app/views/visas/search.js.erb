@@ -1,0 +1,5 @@
+<% if @e %>
+alert("<%= @e.to_s %>");
+<% else %>
+jQuery('#visa_table').html("<%= escape_javascript(render(partial: 'visa_table')) %>");
+<% end %>

@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 0
+  name: 'YIWEN GONG'
+  passport_number: 'E28108903'
+  phone_number: '13862965504'
+  mail_address: 'zuimeng1995@gmail.com'
+
+two:
+  name: 'MOMOKO GONG'
+  passport_number: 'E28108904'
+  phone_number: '13862965504'
+  mail_address: 'zuimeng1995@gmail.com'

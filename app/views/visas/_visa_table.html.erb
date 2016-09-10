@@ -1,0 +1,44 @@
+<table class="table" id="visa_table">
+  <th>
+    <td>passport number</td>
+    <td>country</td>
+    <td>type</td>
+    <td></td>
+  </th>
+  <% if @visas %>
+    <% @visas.each do |visa| %>
+      <tr>
+	<td><%= visa.applicant.name %></td>
+	<td><%= visa.applicant.passport_number %></td>
+	<td><%= visa.country_abbr %></td>
+	<td><%= visa.visa_type %></td>
+	<td><button class="btn btn-primary" onclick="toggle_status(<%= visa.id %>)">Status<span class="caret"></span></button></td>
+      </tr>
+      
+      <tr id="visa_<%= visa.id %>" style="display:none">
+	<td>status<i class="glyphicon glyphicon-tasks"></i></td>
+	<td colspan="4">
+	  <div class="progress">
+	    <div class="progress-bar progress-bar-success" style="width: <%= number_to_percentage(100 * visa.complete_status) %>">
+	    </div>
+	  </div>
+	</td>
+      </tr>
+      
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="4" style="text-align:center">No visa found</td>
+    </tr>
+  <% end %>
+</table>
+
+<script>
+ function toggle_status(id) {
+   if(jQuery("#visa_" + id).css('display') == 'none') {
+     jQuery("#visa_" + id).show();
+   } else {
+     jQuery("#visa_" + id).hide();
+   }
+ }
+</script>
