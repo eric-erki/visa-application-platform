@@ -7,12 +7,12 @@
 <div class="row">
   <div class="col-md-6" style="text-align:center;">
     <h3>for Travel Agency</h3>
-    <a class="btn btn-primary" href="/employees/login">Travel Agency Login</a>
+    <%= link_to 'Travel Agency Login', new_session_path, class: "btn btn-primary" %>
   </div>
 
   <div class="col-md-6" style="text-align:center">
     <h3>for visa applicant</h3>
-    <a class="btn btn-primary" href="/visas">Visa Process Query</a>
+    <%= link_to 'Visa Status Query', visas_path, class: "btn btn-primary" %>
   </div>
 </div>
 

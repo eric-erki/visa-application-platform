@@ -28,21 +28,21 @@ ActiveRecord::Schema.define(version: 20160908125207) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "employees", force: :cascade do |t|
-    t.string   "name"
-    t.string   "user_name"
-    t.string   "password"
-    t.text     "domain"
-    t.integer  "corporate_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "messages", force: :cascade do |t|
     t.text     "content"
     t.integer  "applicant_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "staffs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "user_name"
+    t.string   "password_digest"
+    t.text     "domain"
+    t.integer  "corporate_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "statuses", force: :cascade do |t|

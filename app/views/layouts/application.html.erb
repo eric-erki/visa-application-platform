@@ -10,8 +10,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div style="min-height:800px">
+    <%= yield %>
+  </div>
+<%= render partial: 'layouts/footer' %>
+  
 </body>
 </html>

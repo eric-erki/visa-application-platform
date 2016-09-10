@@ -1,0 +1,14 @@
+one:
+  id: 0
+  name: 'Elena Gong'
+  user_name: '201392248'
+  password_digest: <%= BCrypt::Password.create('123456', cost: 5) %>
+  domain: 'staff'
+  corporate_id: 0
+
+two:
+  name: 'Momoko Gong'
+  user_name: '201392249'
+  password_digest: <%= BCrypt::Password.create('123456', cost: 5) %>
+  domain: 'manager'
+  corporate_id: 0

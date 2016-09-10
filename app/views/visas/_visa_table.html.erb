@@ -1,7 +1,8 @@
+<div class="row">
 <table class="table" id="visa_table">
   <th>
     <td>passport number</td>
-    <td>country</td>
+    <td>country of visa</td>
     <td>type</td>
     <td></td>
   </th>
@@ -28,11 +29,12 @@
     <% end %>
   <% else %>
     <tr>
-      <td colspan="4" style="text-align:center">No visa found</td>
+      <td colspan="4" style="text-align:center"><h3>Input name and passport number to get visa status</h3></td>
     </tr>
   <% end %>
 </table>
 
+</div>
 <script>
  function toggle_status(id) {
    if(jQuery("#visa_" + id).css('display') == 'none') {
