@@ -1,8 +1,20 @@
 .clearfix
-footer style="height:100px;background-color:#5AB3AD"
+footer style="background-color:#5AB3AD"
     .row
       .col-md-4
-        <a href="mailto:zuimeng1995@gmail.com">Contact Me</a>
+        .footer-container
+          h3  About Us
+          <a href="<%= ActionController::Base.relative_url_root %>/top/index">Our Product</a>
       .col-md-4
-        <a href="https://github.com/Adagio-cantabile">My Github</a>
+        .footer-container
+          h3 About The author
+          <a href="mailto:zuimeng1995@gmail.com">zuimeng1995@gmail.com</a>
+          <br>
+          li class="fa fa-github-alt"
+          <a href="https://github.com/Adagio-cantabile">  My Github</a>
+          <br>
+          <a href="http://adagio-cantabile.github.io/">My Homepage</a>
       .col-md-4
+        .footer-container
+          h3  Description
+          p  It's a university homework done by Elena Gong, who is a Rails developer, from Dalian University of Technology, China.

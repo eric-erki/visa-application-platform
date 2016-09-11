@@ -1,0 +1,30 @@
+.banner
+  .row
+    .col-md-2
+    div class="col-md-8"
+      h2 <i class="fa fa-send"></i>  Send us a message
+    div class="col-md-2"
+.row
+  .col-md-2
+  .col-md-8
+    .input-group style="width:100%"
+      .row
+        .col-md-3
+          span.input-group-addon = @applicant.name
+        .col-md-3
+          span.input-group-addon = @applicant.passport_number
+        .col-md-3
+          span.input-group-addon = @applicant.phone_number
+        .col-md-3
+          span.input-group-addon = @applicant.mail_address
+
+      div.notice-info
+        span class="label label-warning"  notice
+        |      If you find your contact infomation is not correct, please mention in your message
+
+      = form_for(:messages, url: messages_path, remote: true) do |f|
+        = f.text_area :content, {class: 'form-control', placeholder: 'Input your message here...', rows: 10}
+        = f.hidden_field :applicant_id, value: @applicant.id
+        span.send_button
+          = f.submit "Send", class: 'btn btn-primary'
+  .col-md-2

@@ -17,12 +17,15 @@
       </tr>
       
       <tr id="visa_<%= visa.id %>" style="display:none">
-	<td>status<i class="glyphicon glyphicon-tasks"></i></td>
+	<td><h3>status</h3></td>
 	<td colspan="4">
 	  <div class="progress">
 	    <div class="progress-bar progress-bar-success" style="width: <%= number_to_percentage(100 * visa.complete_status) %>">
 	    </div>
 	  </div>
+	  <h5><%= visa.current_status.status_name %>, 更新于<%= visa.current_status.created_at %></h5>
+	  <h5><i class="fa fa-sticky-note"></i> <%= visa.current_status.note %></h5>
+	  <h5>Has problem? Please tell us. <%= link_to 'send a message to use', new_message_path(applicant: visa.applicant) %></h5>
 	</td>
       </tr>
       
