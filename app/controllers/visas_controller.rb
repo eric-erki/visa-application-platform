@@ -12,11 +12,6 @@ class VisasController < ApplicationController
   end
 
   def management
-    name = visa_params[:name]
-    passport_number = visa_params[:passport_number]
-    phone_number = params[:phone_number]
-    mail_address = params[:mail_address]
-    Applicant.find_or_create(name, passport_number, phone_number, mail_address)
   end
 
   def new
@@ -36,6 +31,6 @@ class VisasController < ApplicationController
   end
 
   def visa_params
-    params.require(:name, :passport_number, :phone_number, :mail_address, :country_abbr, :type)
+    params.permit(:name, :passport_number, :phone_number, :mail_address, :country_abbr, :type)
   end
 end

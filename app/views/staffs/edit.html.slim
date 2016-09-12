@@ -1,0 +1,17 @@
+.row
+  .col-md-2
+  .col-md-8
+    div.form-container
+      div style='margin-bottom:30px' class='alert alert-warning alert-dismissible' role='alert'
+         | If you don't want to change your password, just keep it empty
+      = form_for(current_staff, method: 'patch') do |f|
+        = f.label :user_name
+        = f.text_field(:user_name, { class: 'form-control', disabled: true })
+        = f.label :name
+        = f.text_field(:name, class: 'form-control')
+        = f.label :password
+        = f.password_field(:password, class: 'form-control')
+        = f.label :password_confirmation
+        = f.password_field(:password_confirmation, class: 'form-control')
+        <br>
+        = f.submit 'Update', class: 'btn btn-primary'

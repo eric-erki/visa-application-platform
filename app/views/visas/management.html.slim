@@ -7,8 +7,10 @@
           = image_tag('passport.png', height: "80px")
         h5 create visa application
     .col-md-4
-      .management-container
-        = link_to staffs_path
-          = image_tag('user.png', height: "80px")
-        h5 manage staffs
+      - if current_staff.domain == 'admin'
+        .management-container
+          = link_to staffs_path
+            = image_tag('user.png', height: "80px")
+          h5 manage staffs
+            
     .col-md-2

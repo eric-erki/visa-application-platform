@@ -1,0 +1,30 @@
+.banner
+  .row
+    .col-md-2
+    .col-md-2
+      div.management-container
+        = image_tag('user.png', height: '80px')
+    .col-md-6
+      div.management-container
+        h2  = current_staff.corporate.name
+    .col-md-2`
+.row
+  .col-md-2
+  .col-md-8
+    div style='margin-bottom:30px' class='alert alert-warning alert-dismissible' role='alert'
+      p  Delete staff will delete all related visa statuses, please make sure it's not used elsewhere
+    table.table
+      th
+        td User Name
+        td Name
+        td Domain
+        td
+      - @staffs.each do |staff|
+        tr
+          td
+          td = staff.user_name
+          td = staff.name
+          td = staff.domain
+          td = link_to('Delete', staff_path(staff), { method: 'delete', class: "btn btn-danger", data: { confirm: 'Really delete?' }})
+  .col-md-2
+      
