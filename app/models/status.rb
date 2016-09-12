@@ -1,9 +1,14 @@
 # coding: utf-8
 class Status < ActiveRecord::Base
   belongs_to :visa
+  belongs_to :staff
 
   def status_name
     ALL_STATUSES[status_code]
+  end
+
+  def complete?
+    status_code == (5 || 6) ? true : false
   end
   
   ALL_STATUSES = {

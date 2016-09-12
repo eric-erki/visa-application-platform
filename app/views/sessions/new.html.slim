@@ -1,20 +1,17 @@
 .row
-  div.col-md-6 style="background-color:#5AB3AD"
-    = image_tag('passport_green.png')
+  div.col-md-6 style="background-color:#78B35A;text-align:center;height:600px;"
+    = image_tag('icons.png')
+    p class="head-font" style="font-size:40px;margin-top:30px" "Travel and change of place impart new vigor to the mind."
+    p class="head-font" style="font-size:30px;"  ---- Seneca
 
   div.col-md-6
-    div.container
-      = flash[:notice]
-      h1 Log in
+    div.login-container
+      h1 Sign in
       = form_tag(sessions_path) do
         = label_tag :user_name
-        = text_field_tag(:user_name)
+        = text_field_tag(:user_name, "", class: 'form-control')
         <br>
         = label_tag :password
-        = password_field_tag(:password)
+        = password_field_tag(:password, "", class: 'form-control')
         <br>
-        = label_tag(:remember_me) do
-          = check_box_tag :remember_me
-          span  Remember me
-        <br>  
-        = submit_tag "Log in", class: "btn btn-primary"
+        = submit_tag "Sign in", class: "btn btn-primary"

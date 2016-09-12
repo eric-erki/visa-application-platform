@@ -1,0 +1,5 @@
+.progress-line
+div
+  - percent = 1.
+  - for visa.successful_process.each do
+    

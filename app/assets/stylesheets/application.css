@@ -34,11 +34,20 @@ body {
     }
     
     &:hover {
-        color: $brand-color; //buttons will override this
+        color: #fff;
         text-decoration: underline;
     }
 
 }
 .footer-container h3 {
     margin-bottom: 20px;
+}
+.head-font {
+    font-family: 'savoye let';
+    color: white;
+}
+.form-container {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 40px;
 }

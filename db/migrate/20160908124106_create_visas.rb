@@ -4,7 +4,6 @@ class CreateVisas < ActiveRecord::Migration
       t.string :country_abbr
       t.integer :visa_type
       t.text :note
-      t.boolean :archived
       t.integer :applicant_id
 
       t.timestamps null: false

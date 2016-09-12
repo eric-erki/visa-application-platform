@@ -1,5 +1,6 @@
 <% if @e %>
-alert("<%= @e.to_s %>");
+bootbox.alert("<%= @e %>", function() {
+});
 <% else %>
 jQuery('#visa_table').html("<%= escape_javascript(render(partial: 'visa_table')) %>");
 <% end %>

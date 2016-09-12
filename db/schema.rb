@@ -51,13 +51,13 @@ ActiveRecord::Schema.define(version: 20160908125207) do
     t.integer  "visa_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "staff_id"
   end
 
   create_table "visas", force: :cascade do |t|
     t.string   "country_abbr"
     t.integer  "visa_type"
     t.text     "note"
-    t.boolean  "archived"
     t.integer  "applicant_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

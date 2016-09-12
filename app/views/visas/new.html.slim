@@ -1,0 +1,35 @@
+.row
+  .col-md-2
+  .col-md-8
+    div.form-container
+      = form_tag(visas_path) do
+        = label_tag :applicant_name
+        = text_field_tag(:name, "", class: "form-control")
+        = label_tag :applicant_passport_number
+        = text_field_tag(:passport_number, "", class: "form-control")
+        = label_tag :applicant_phone_number
+        = text_field_tag(:phone_number, "", class: "form-control")
+        = label_tag :applicant_mail_address
+        = text_field_tag(:mail_address, "", class: "form-control")
+        = label_tag :country_abbreviation
+        = select_tag(:country_abbr, options_for_select(Visa.available_countries), { class: "form-control", id: "country_abbr" })
+        = label_tag :visa_type
+        = select_tag(:type, [], class: "form-control")
+        <br>
+        = submit_tag 'Create', class: "btn btn-primary"
+  .col-md-2
+
+javascript:
+  jQuery(document).ready(function() {
+    jQuery("#country_abbr").on('change', function () {
+      ajax_set_visa_type_options(this.val());
+    });
+    ajax_set_visa_type_options(jQuery("#country_abbr").val());
+  });
+
+  function ajax_set_visa_type_options(country) {
+    jQuery.ajax('set_visa_type_options', {
+      beforeSend: function(xhr) { xhr.setRequestHeader('X-CSRF-Token', jQuery('meta[name="csrf-token"]').attr('content')) },
+      data: { country: country }
+    });
+  }

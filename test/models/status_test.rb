@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class StatusTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  fixtures :statuses
+  
+  def test_complete
+    status = statuses(:one)
+    assert !status.complete?
+  end
 end

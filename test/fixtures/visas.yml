@@ -5,5 +5,4 @@ one:
   country_abbr: 'JPN'
   visa_type: 0
   note: 'This should be handled as soon as possible'
-  archived: false
   applicant_id: 0

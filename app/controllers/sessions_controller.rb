@@ -6,8 +6,7 @@ class SessionsController < ApplicationController
     staff = Staff.find_by_user_name(params[:user_name])
     if staff and staff.authenticate(params[:password])
       session[:staff_id] = staff.id
-      flash[:notice] = 'Logged in'
-      redirect_to visas_path
+      redirect_to controller: 'visas', action: 'management'
     else
       flash[:notice] = 'username or password is invalid'
       redirect_to new_session_path

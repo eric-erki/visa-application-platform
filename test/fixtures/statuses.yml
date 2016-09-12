@@ -5,22 +5,26 @@ one:
   note: "未处理"
   visa_id: 0
   created_at: "2016-09-1 03:00:07"
+  staff_id: 0
 
 two:
   status_code: 1
   note: "材料审核中，请耐心等待"
   visa_id: 0
   created_at: "2016-09-2 03:00:07"
+  staff_id: 0
 
 three:
   status_code: 2
   note: "已送往日本驻大连领事馆"
   visa_id: 0
   created_at: "2016-09-3 03:00:07"
+  staff_id: 1
 
 four:
   status_code: 4
   note: "使馆审核中，预计花费7个工作日"
   visa_id: 0
   created_at: "2016-09-4 03:00:07"
+  staff_id: 1
 

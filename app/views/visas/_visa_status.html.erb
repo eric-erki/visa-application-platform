@@ -1,0 +1,7 @@
+<td></td>
+
+<td colspan-"5">
+  <% visa.history_statuses.each do |status| %>
+    <p><%= status.status_name %>,  <%= status.created_at %></p>
+  <% end %>
+</td>

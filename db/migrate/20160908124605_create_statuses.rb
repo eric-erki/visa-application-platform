@@ -4,6 +4,7 @@ class CreateStatuses < ActiveRecord::Migration
       t.integer :status_code
       t.text :note
       t.integer :visa_id
+      t.integer :staff_id
 
       t.timestamps null: false
     end

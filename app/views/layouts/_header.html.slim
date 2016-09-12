@@ -1,1 +1,16 @@
-div style="height:50px;background-color:#5AB3AD;"
+div  style="height:55px;background-color:#5AB3AD"
+  .container-fluid
+    a href="/"
+      = image_tag('brand.png')
+    - if current_staff
+      div style="float:right;margin-top:7px;margin-right:50px"
+        div class="dropdown"
+          button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" 
+            = current_staff.name
+            span.caret
+          ul.dropdown-menu aria-labelledby="dropdownMenu1"
+            li
+              = link_to 'Sign out', session_path(current_staff), method: 'delete'
+            li
+              = link_to "Edit profile", edit_staff_path(current_staff)
+ 

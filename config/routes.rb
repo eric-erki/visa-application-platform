@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :messages
   resources :top
+  resources :staffs
 
   root 'top#index'
 
@@ -61,12 +62,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  get "employees/login", to: "employees#login"
-  post "employees/authenticate", to: "employees#authenticate"
-    
-  post "visas/search", to: "visas#search"
 
   resources 'visas' do
+    get 'management', on: :collection
+    post 'search', on: :collection
+    get 'set_visa_type_options', on: :collection
   end
   
 end

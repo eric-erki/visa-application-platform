@@ -1,6 +1,6 @@
-<div style="background-color:#5AB3AD;height:50px;">
+<% if current_staff %>
   <p style="text-align:right">Welcome, <%= current_staff.name %> from <%= current_staff.corporate.name %></p>
-</div>
+<% end %>
 
 <div class="row">
   <div class="col-md-1"></div>
@@ -24,9 +24,10 @@
 	<% end %>
       </div>
     </div>
-  <%= flash[:notice] %>
-  
-  <%= render partial: 'visa_table' %>
+
+    <div id="visa_table">
+      <%= render partial: 'visa_table' %>
+    </div>
 
   </div>
   <div class="col-md-1"></div>

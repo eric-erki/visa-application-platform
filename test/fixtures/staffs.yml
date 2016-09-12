@@ -3,7 +3,7 @@ one:
   name: 'Elena Gong'
   user_name: '201392248'
   password_digest: <%= BCrypt::Password.create('123456', cost: 5) %>
-  domain: 'staff'
+  domain: 'admin'
   corporate_id: 0
 
 two:

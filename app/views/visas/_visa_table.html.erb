@@ -1,6 +1,6 @@
-<div class="row">
-<table class="table" id="visa_table">
+<table class="table">
   <th>
+    <td>name</td>
     <td>passport number</td>
     <td>country of visa</td>
     <td>type</td>
@@ -8,24 +8,24 @@
   </th>
   <% if @visas %>
     <% @visas.each do |visa| %>
+      <% next if visa.archived? %>
       <tr>
+	<td>V<%= visa.id %></td>
 	<td><%= visa.applicant.name %></td>
 	<td><%= visa.applicant.passport_number %></td>
 	<td><%= visa.country_abbr %></td>
-	<td><%= visa.visa_type %></td>
-	<td><button class="btn btn-primary" onclick="toggle_status(<%= visa.id %>)">Status<span class="caret"></span></button></td>
+	<td><%= visa.visa_type_name %></td>
+	<td><button class="btn btn-primary" onclick="toggle_status(<%= visa.id %>)">Detail  <span class="caret"></span></button></td>
       </tr>
       
       <tr id="visa_<%= visa.id %>" style="display:none">
-	<td><h3>status</h3></td>
-	<td colspan="4">
-	  <div class="progress">
-	    <div class="progress-bar progress-bar-success" style="width: <%= number_to_percentage(100 * visa.complete_status) %>">
-	    </div>
-	  </div>
-	  <h5><%= visa.current_status.status_name %>, 更新于<%= visa.current_status.created_at %></h5>
-	  <h5><i class="fa fa-sticky-note"></i> <%= visa.current_status.note %></h5>
-	  <h5>Has problem? Please tell us. <%= link_to 'send a message to use', new_message_path(applicant: visa.applicant) %></h5>
+	<td></td>
+	<td colspan="5" style="text-align:center">
+	  <% visa.history_statuses.each do |status| %>
+	    <p><%= status.status_name %>,  <%= status.created_at %></p>
+	    <h5>Has problem? Please tell us. <%= link_to 'send a message to use', new_message_path(applicant: visa.applicant) %></h5>
+	    <br>
+	  <% end %>
 	</td>
       </tr>
       
@@ -37,7 +37,6 @@
   <% end %>
 </table>
 
-</div>
 <script>
  function toggle_status(id) {
    if(jQuery("#visa_" + id).css('display') == 'none') {
