@@ -1,0 +1,34 @@
+table#visa_management_table class="table"
+  thead
+    tr
+      th
+      th Applicant Name
+      th Applicant Passport Number
+      th Country
+      th Type
+      th Current Status
+      th latest updated
+      th
+      th
+    - @visas.each do |visa|
+      tr
+        td = visa.id
+        td = visa.applicant.name
+        td = visa.applicant.passport_number
+        td = visa.country_abbr
+        td = visa.visa_type_name
+        td = visa.current_status.status_name
+        td = visa.current_status.created_at.strftime("%y/%m/%d")
+        - if visa.current_status.final_step?
+          td
+            = link_to raw('<i class="glyphicon glyphicon-ok"></i>Success'), statuses_path(success: true, visa_id: visa.id), remote: true, method: 'post', class: 'btn btn-default'
+            = link_to raw('<i class="glyphicon glyphicon-remove"></i>Rejected'), statuses_path(rejected: true, visa_id: visa.id), remote: true, method: 'post', class: 'btn btn-default'
+        - elsif visa.current_status.complete?
+          td
+        - else
+          td = link_to 'Update Status', statuses_path(visa_id: visa.id, current_status_id: visa.current_status.id), remote: true, method: 'post', class: 'btn btn-default'
+
+        -if visa.current_status.status_code == 0
+          td = link_to 'Edit', edit_visa_path(visa), class: 'btn btn-warning'
+        -if current_staff.domain == 'admin' && visa.current_status.status_code == 0
+          td = link_to 'Delete', visa_path(visa), method: 'delete', class: 'btn btn-danger', data: { confirm: 'Really delete?' }

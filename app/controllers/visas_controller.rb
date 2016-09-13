@@ -12,7 +12,7 @@ class VisasController < ApplicationController
   end
 
   def management
-    @visas = Visa.all.order()
+    @visas = Visa.all
   end
 
   def new
@@ -26,9 +26,15 @@ class VisasController < ApplicationController
     visa.country_abbr = visa_params[:country_abbr]
     visa.visa_type = visa_params[:type]
     visa.save!
+    status = Status.new(status_code: 0, visa_id: visa.id, staff_id: current_staff.id)
+    status.save!
     @m = 'created successfully'
   end
 
+  def edit
+    @visa = Visa.find(params[:id])
+  end
+  
   def set_visa_type_options
     country = params[:country]
     types = Visa.visa_types(country)
@@ -47,4 +53,5 @@ class VisasController < ApplicationController
   def visa_params
     params.permit(:name, :passport_number, :phone_number, :mail_address, :country_abbr, :type)
   end
+
 end

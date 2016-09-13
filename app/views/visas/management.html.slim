@@ -1,6 +1,10 @@
+= javascript_include_tag('jquery.tablesorter.min.js')
+= javascript_include_tag('jquery.tablesorter.widgets.min.js')
+= stylesheet_link_tag('theme.bootstrap.css')
+
 .banner
   .row
-    .col-md-2
+    .col-md-1
     .col-md-2
       .management-container
         = link_to new_visa_path
@@ -17,6 +21,11 @@
           = image_tag('travel.png', height: "80px")
           h5 view all applicant info
     .col-md-2
+      .management-container
+        = link_to messages_path
+          = image_tag('postcard.png', height: "80px")
+          h5 view all messages
+    .col-md-1
       - if current_staff.domain == 'admin'
         .management-container
           = link_to staffs_path

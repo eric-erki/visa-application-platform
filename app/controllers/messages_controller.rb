@@ -1,4 +1,8 @@
 class MessagesController < ApplicationController
+  def index
+    
+  end
+  
   def new
     @applicant = Applicant.find(params[:applicant])
   end

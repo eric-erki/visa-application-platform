@@ -8,17 +8,21 @@ class Status < ActiveRecord::Base
   end
 
   def complete?
-    status_code == (5 || 6) ? true : false
+    (status_code == 5 || status_code == 6) ? true : false
+  end
+
+  def final_step?
+    status_code == 4
   end
   
   ALL_STATUSES = {
-   0 => '待处理',
-   1 => '材料审核中',
-   2 => '已送签',
-   3 => '待面试',
-   4 => '使馆审核中',
-   5 => '已出签',
-   6 => '拒签'
+   0 => 'pending',
+   1 => 'checking documents',
+   2 => 'application sent to administration',
+   3 => 'wating for interview',
+   4 => 'administration checking documents',
+   5 => 'success',
+   6 => 'reject'
   }
 
   #five steps in total
