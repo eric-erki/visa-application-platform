@@ -1,0 +1,29 @@
+.banner
+  .row
+    .col-md-2
+    .col-md-2
+      .management-container
+        = link_to '/visas/management'
+          = image_tag('plane-ticket.png', height: "80px")
+          h5 = raw("<i class='glyphicon glyphicon-backward'></i>Go back")
+    .col-md-6
+      div.management-container
+        h2  = current_staff.corporate.name
+    .col-md-2`
+.row
+  .col-md-2
+  .col-md-8
+    div.form-container
+      = form_for(:staff, url: staffs_path, remote: true) do |f|
+        = f.label :user_name
+        = f.text_field :user_name, class: 'form-control'
+        = f.label :password
+        = f.text_field :password, class: 'form-control'
+        = f.label :password_confirmation
+        = f.text_field :password_confirmation, class: 'form-control'
+        = f.label :domain
+        = f.select(:domain, ['staff', 'manager'], {}, class: 'form-control')
+        <br>
+        = f.submit 'Create', class: "btn btn-primary"
+  .col-md-2
+

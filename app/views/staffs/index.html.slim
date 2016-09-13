@@ -27,6 +27,13 @@
           td = staff.user_name
           td = staff.name
           td = staff.domain
-          td = link_to('Delete', staff_path(staff), { method: 'delete', class: "btn btn-danger", data: { confirm: 'Really delete?' }})
+          td
+            - unless staff.domain == 'admin'
+              = link_to('Delete', staff_path(staff), { method: 'delete', class: "btn btn-danger", data: { confirm: 'Really delete?' }})
   .col-md-2
-      
+.row style="margin-top:20px"
+  .col-md-2
+  .col-md-10
+    = link_to 'Create new staff', new_staff_path, class: 'btn btn-primary'
+  .col-md-2
+

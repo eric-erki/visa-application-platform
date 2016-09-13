@@ -36,6 +36,12 @@ class VisasController < ApplicationController
     @visa = Visa.find(params[:id])
     current_staff.corporate.own?(visa: @visa)
   end
+
+  def destroy
+    visa = Visa.find(params[:id])
+    current_staff.corporate.own?(visa: visa)
+    visa.destroy
+  end
   
   def set_visa_type_options
     country = params[:country]

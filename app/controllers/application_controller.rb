@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   
   rescue_from(ActiveRecord::RecordInvalid) {|e| @e = e.record.errors.full_messages.join("<br>"); render 'shared/bootbox.js.erb' }
   rescue_from(PageNotFoundError, with: :error_404)
+  rescue_from(ActiveRecord::RecordNotFound, with: :error_404)
   
   private
   def current_staff
@@ -16,12 +17,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_staff
 
   def error_404
-    send_file "#{RAILS_ROOT}/public/404.html" , :type => "text/html; charset=utf-8", :disposition => 'inline', :status => :not_found
+    send_file "public/404.html" , :type => "text/html; charset=utf-8", :disposition => 'inline', :status => :not_found
   end
   
   #check if staff access corresponds to his domain
   def check_access_domain
-    
+    raise PageNotFoundError unless AccessDomain.domain_ok?(current_staff.domain, params[:controller], params[:action])
   end
-
 end
