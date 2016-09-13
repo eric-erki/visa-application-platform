@@ -25,14 +25,13 @@
         = link_to messages_path
           = image_tag('postcard.png', height: "80px")
           h5 view all messages
-    .col-md-1
+    .col-md-2
       - if current_staff.domain == 'admin'
         .management-container
           = link_to staffs_path
             = image_tag('user.png', height: "80px")
             h5 manage staffs
-            
-    .col-md-2
+    .col-md-1
 
 .row
   .col-md-1

@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160908125207) do
 
   create_table "messages", force: :cascade do |t|
     t.text     "content"
+    t.integer  "already_read"
     t.integer  "applicant_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

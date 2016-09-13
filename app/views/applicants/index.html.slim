@@ -2,8 +2,10 @@
   .row
     .col-md-2
     .col-md-2
-      div.management-container
-        = image_tag('travel.png', height: '80px')
+      .management-container
+        = link_to 'visas/management'
+          = image_tag('travel.png', height: "80px")
+          h5 = raw("<i class='glyphicon glyphicon-backward'></i>Go back")
     .col-md-6
       div.management-container
         h2  = current_staff.corporate.name

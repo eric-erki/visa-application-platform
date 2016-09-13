@@ -1,0 +1,18 @@
+bootbox.dialog({
+  message: "<%= @m %>",
+  buttons: {
+    success: {
+      label: "<i class='fa fa-backward'></i>  Go Back",
+      className: "btn-primary",
+      callback: function() {
+	window.location.href = "<%= ActionController::Base.relative_url_root %>/visas/management"
+      }
+    },
+    danger: {
+      label: "Stay Here",
+      className: "btn btn-default",
+      callback: function() {
+      }
+    },
+  }
+});

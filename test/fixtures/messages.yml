@@ -1,7 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  content: MyText
+  content: 'Can I want to cancel my application?'
+  applicant_id: 0
+  already_read: 0
 
 two:
-  content: MyText
+  content: 'Why my visa application was not updated for more than 1 week?'
+  applicant_id: 0
+  already_read: 1

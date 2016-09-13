@@ -1,0 +1,37 @@
+.banner
+  .row
+    .col-md-2
+    .col-md-2
+      .management-container
+        = link_to 'visas/management'
+          = image_tag('postcard.png', height: "80px")
+          h5 = raw("<i class='glyphicon glyphicon-backward'></i>Go back")
+    .col-md-6
+      div.management-container
+        h2  = current_staff.corporate.name
+    .col-md-2`
+.row
+  .col-md-1
+  .col-md-10
+    table.table
+      th
+        td Applicant name
+        td Applicant passport number
+        td Applicant phone number
+        td Applicant mail address
+        td style="min-width:400px;" Content
+        td
+      - unless @messages.present?
+        tr
+          td colspan="6" 
+            h2 style="text-align:center" No message yet
+      - @messages.each do |message|
+        tr
+          td
+          td = message.applicant.name
+          td = message.applicant.passport_number
+          td = message.applicant.phone_number
+          td = message.applicant.mail_address
+          td = message.content
+          td = link_to('Done with it', message_path(message), { method: 'patch', class: "btn btn-primary", remote: true})
+  .col-md-1

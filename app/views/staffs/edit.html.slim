@@ -1,3 +1,15 @@
+.banner
+  .row
+    .col-md-2
+    .col-md-2
+      .management-container
+        = link_to '/visas/management'
+          = image_tag('user.png', height: "80px")
+          h5 = raw("<i class='glyphicon glyphicon-backward'></i>Go back")
+    .col-md-6
+      div.management-container
+        h2  = current_staff.corporate.name
+    .col-md-2`
 .row
   .col-md-2
   .col-md-8
