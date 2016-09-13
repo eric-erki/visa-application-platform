@@ -1,0 +1,31 @@
+.banner
+  .row
+    .col-md-2
+    .col-md-2
+      div.management-container
+        = image_tag('travel.png', height: '80px')
+    .col-md-6
+      div.management-container
+        h2  = current_staff.corporate.name
+    .col-md-2`
+.row
+  .col-md-2
+  .col-md-8
+    table.table
+      th
+        td Name
+        td Passport number
+        td Phone number
+        td mail address
+        td
+        td
+      - @applicants.each do |applicant|
+        tr
+          td
+          td = applicant.name
+          td = applicant.passport_number
+          td = applicant.phone_number
+          td = applicant.mail_address
+          td = link_to('Edit', edit_applicant_path(applicant), { class: "btn btn-warning"})
+          td = link_to('Delete', applicant_path(applicant), { method: 'delete', class: "btn btn-danger", data: { confirm: 'Really delete?' }})
+  .col-md-2

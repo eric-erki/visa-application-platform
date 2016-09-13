@@ -3,10 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  rescue_from(ActiveRecord::RecordInvalid) {|e| @e = e.record.errors.full_messages.join("<br>"); render 'shared/bootbox.js.erb' }
+  
   private
   def current_staff
     @current_staff ||= Staff.find(session[:staff_id]) if session[:staff_id]
   end
 
   helper_method :current_staff
+
 end

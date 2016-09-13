@@ -1,0 +1,16 @@
+.row
+  .col-md-2
+  .col-md-8
+    div.form-container
+      = form_for(@applicant, url: applicant_path(@applicant.id), remote: true, method: 'patch') do |f|
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
+        = f.label :passport_number
+        = f.text_field :passport_number, class: 'form-control'
+        = f.label :phone_number
+        = f.text_field :phone_number, class: 'form-control'
+        = f.label :mail_address
+        = f.text_field :mail_address, class: 'form-control'
+        <br>
+        = f.submit 'Update', class: "btn btn-primary"
+  .col-md-2

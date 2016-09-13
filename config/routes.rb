@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'messages/new'
 
   resources :sessions
   resources :messages
   resources :top
   resources :staffs
+  resources :applicants
 
   root 'top#index'
 
@@ -67,6 +67,7 @@ Rails.application.routes.draw do
     get 'management', on: :collection
     post 'search', on: :collection
     get 'set_visa_type_options', on: :collection
+    get 'check_applicant_info', on: :collection
   end
   
 end

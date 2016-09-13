@@ -12,6 +12,7 @@ class VisasController < ApplicationController
   end
 
   def management
+    @visas = Visa.all.order()
   end
 
   def new
@@ -19,6 +20,13 @@ class VisasController < ApplicationController
   end
 
   def create
+    applicant = Applicant.where('passport_number = ?', visa_params[:passport_number]).last
+    visa = Visa.new
+    visa.applicant_id = applicant.id
+    visa.country_abbr = visa_params[:country_abbr]
+    visa.visa_type = visa_params[:type]
+    visa.save!
+    @m = 'created successfully'
   end
 
   def set_visa_type_options
@@ -30,6 +38,12 @@ class VisasController < ApplicationController
     end
   end
 
+  def check_applicant_info
+    passport_number = params[:passport_number]
+    @applicant = Applicant.where('passport_number = ?', passport_number).last
+  end
+  
+  private
   def visa_params
     params.permit(:name, :passport_number, :phone_number, :mail_address, :country_abbr, :type)
   end

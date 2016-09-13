@@ -1,0 +1,9 @@
+<% unless @applicant %>
+bootbox.alert('No applicant found, check passport number or create a new applicant', function() {
+});
+<% else %>
+jQuery('#name').val('<%= @applicant.name %>');
+jQuery('#phone_number').val('<%= @applicant.phone_number %>');
+jQuery('#mail_address').val('<%= @applicant.mail_address %>');
+jQuery('#create_visa').prop('disabled', false);
+<% end %>

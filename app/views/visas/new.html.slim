@@ -2,21 +2,27 @@
   .col-md-2
   .col-md-8
     div.form-container
-      = form_tag(visas_path) do
-        = label_tag :applicant_name
-        = text_field_tag(:name, "", class: "form-control")
-        = label_tag :applicant_passport_number
-        = text_field_tag(:passport_number, "", class: "form-control")
-        = label_tag :applicant_phone_number
-        = text_field_tag(:phone_number, "", class: "form-control")
-        = label_tag :applicant_mail_address
-        = text_field_tag(:mail_address, "", class: "form-control")
+      = form_tag(visas_path, remote: true) do
+        div style="border: 1px solid #5AB3AD;padding:10px;"
+          = label_tag :applicant_passport_number
+          = text_field_tag(:passport_number, "", class: "form-control", id: "applicant_passport_number")
+          <br>
+          button id='check_applicant_info' class='btn btn-success'  Check applicant info
+          <br>
+          <br>
+          = label_tag :applicant_name
+          = text_field_tag(:name, "", class: "form-control", disabled: true)
+          = label_tag :applicant_phone_number
+          = text_field_tag(:phone_number, "", class: "form-control", disabled: true)
+          = label_tag :applicant_mail_address
+          = text_field_tag(:mail_address, "", class: "form-control", disabled: true)
+          
         = label_tag :country_abbreviation
         = select_tag(:country_abbr, options_for_select(Visa.available_countries), { class: "form-control", id: "country_abbr" })
         = label_tag :visa_type
         = select_tag(:type, [], class: "form-control")
         <br>
-        = submit_tag 'Create', class: "btn btn-primary"
+        = submit_tag 'Create', class: "btn btn-primary", id: 'create_visa', disabled: true
   .col-md-2
 
 javascript:
@@ -25,6 +31,17 @@ javascript:
       ajax_set_visa_type_options(this.val());
     });
     ajax_set_visa_type_options(jQuery("#country_abbr").val());
+    jQuery('#check_applicant_info').on('click', function(e) {
+      e.preventDefault();
+      if(jQuery('#applicant_passport_number').val() == '') {
+        alert('Please input passport number');
+      } else {
+        jQuery.ajax('check_applicant_info', {
+          beforeSend: function(xhr) { xhr.setRequestHeader('X-CSRF-Token', jQuery('meta[name="csrf-token"]').attr('content')) },
+          data: {passport_number: jQuery('#applicant_passport_number').val()}
+        });
+      }
+    });
   });
 
   function ajax_set_visa_type_options(country) {
@@ -33,3 +50,4 @@ javascript:
       data: { country: country }
     });
   }
+  

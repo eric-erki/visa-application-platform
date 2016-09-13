@@ -1,16 +1,32 @@
 .banner
   .row
     .col-md-2
-    .col-md-4
+    .col-md-2
       .management-container
         = link_to new_visa_path
           = image_tag('passport.png', height: "80px")
-        h5 create visa application
-    .col-md-4
+          h5 create new visa application
+    .col-md-2
+      .management-container
+       = link_to new_applicant_path
+          = image_tag('plane-ticket.png', height: "80px")
+          h5 create new aplicant infomation
+    .col-md-2
+      .management-container
+        = link_to applicants_path
+          = image_tag('travel.png', height: "80px")
+          h5 view all applicant info
+    .col-md-2
       - if current_staff.domain == 'admin'
         .management-container
           = link_to staffs_path
             = image_tag('user.png', height: "80px")
-          h5 manage staffs
+            h5 manage staffs
             
     .col-md-2
+
+.row
+  .col-md-1
+  .col-md-10
+    = render partial: 'visa_management_table'
+  .col-md-1
