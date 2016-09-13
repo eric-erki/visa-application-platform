@@ -11,8 +11,9 @@ table#visa_management_table class="table"
       th
       th
     - @visas.each do |visa|
+      - next if visa.archived?
       tr
-        td = visa.id
+        td 
         td = visa.applicant.name
         td = visa.applicant.passport_number
         td = visa.country_abbr
@@ -27,8 +28,28 @@ table#visa_management_table class="table"
           td
         - else
           td = link_to 'Update Status', statuses_path(visa_id: visa.id, current_status_id: visa.current_status.id), remote: true, method: 'post', class: 'btn btn-default'
+        td
+          -if visa.current_status.status_code == 0
+            = link_to 'Edit', edit_visa_path(visa), class: 'btn btn-warning'
+        td
+          -if current_staff.domain == 'admin' && visa.current_status.status_code == 0
+            = link_to 'Delete', visa_path(visa), method: 'delete', class: 'btn btn-danger', data: { confirm: 'Really delete?' }
+        td 
+          button class="btn btn-primary" onclick="toggle_status(#{visa.id})"  Detail
+      tr id="visa_#{visa.id}"  style="display:none"
+        td
+        td colspan="10" style="text-align:left"
+          div style="border:1px solid #5AB3AD;padding:30px"
+            - visa.history_statuses.each do |status|
+              p  #{status.status_name} ,   #{status.created_at.strftime("%y/%d/%m")},    updated by #{status.staff.try(:name)}
 
-        -if visa.current_status.status_code == 0
-          td = link_to 'Edit', edit_visa_path(visa), class: 'btn btn-warning'
-        -if current_staff.domain == 'admin' && visa.current_status.status_code == 0
-          td = link_to 'Delete', visa_path(visa), method: 'delete', class: 'btn btn-danger', data: { confirm: 'Really delete?' }
+
+javascript:
+  function toggle_status(id) {
+    if(jQuery("#visa_" + id).css('display') == 'none') {
+      jQuery("#visa_" + id).show();
+    } else {
+      jQuery("#visa_" + id).hide();
+    }
+  }
+

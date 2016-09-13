@@ -3,7 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :check_access_domain
+  
   rescue_from(ActiveRecord::RecordInvalid) {|e| @e = e.record.errors.full_messages.join("<br>"); render 'shared/bootbox.js.erb' }
+  rescue_from(PageNotFoundError, with: :error_404)
   
   private
   def current_staff
@@ -11,5 +14,14 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_staff
+
+  def error_404
+    send_file "#{RAILS_ROOT}/public/404.html" , :type => "text/html; charset=utf-8", :disposition => 'inline', :status => :not_found
+  end
+  
+  #check if staff access corresponds to his domain
+  def check_access_domain
+    
+  end
 
 end

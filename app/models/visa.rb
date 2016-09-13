@@ -4,12 +4,17 @@ class Visa < ActiveRecord::Base
   belongs_to :applicant
   has_many :statuses
 
+  validates :country_abbr, presence: true
+  validates :visa_type, numericality: true, presence: true
+  validates :applicant_id, presence: true
+  validates :note, length: { maximum: 200 }
+  
   def successful_process
     SUCCESSFUL_VISA[country_abbr][visa_type][1]
   end
 
   def current_status
-    statuses.order('created_at asc').last
+    statuses.order('status_code asc').last
   end
 
   def history_statuses
@@ -30,7 +35,7 @@ class Visa < ActiveRecord::Base
 
   #visa will be automatically archived after 180 days completing whole process
   def archived?
-    if current_status.complete? && (Time.now < (current_status.created_at + 180.days))
+    if current_status.complete? && (Time.now > (current_status.created_at + 180.days))
       true
     else
       false

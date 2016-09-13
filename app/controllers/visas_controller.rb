@@ -25,6 +25,7 @@ class VisasController < ApplicationController
     visa.applicant_id = applicant.id
     visa.country_abbr = visa_params[:country_abbr]
     visa.visa_type = visa_params[:type]
+    visa.staff_id = current_staff.id
     visa.save!
     status = Status.new(status_code: 0, visa_id: visa.id, staff_id: current_staff.id)
     status.save!
@@ -33,6 +34,7 @@ class VisasController < ApplicationController
 
   def edit
     @visa = Visa.find(params[:id])
+    current_staff.corporate.own?(visa: @visa)
   end
   
   def set_visa_type_options
