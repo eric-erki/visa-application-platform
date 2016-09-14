@@ -16,7 +16,7 @@
     div.form-container
       div style='margin-bottom:30px' class='alert alert-warning alert-dismissible' role='alert'
          | If you don't want to change your password, just keep it empty
-      = form_for(current_staff, method: 'patch') do |f|
+      = form_for(current_staff, url: staff_path(current_staff), remote: true) do |f|
         = f.label :user_name
         = f.text_field(:user_name, { class: 'form-control', disabled: true })
         = f.label :name

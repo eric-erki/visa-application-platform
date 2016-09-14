@@ -6,6 +6,8 @@
 
   div.col-md-6
     div.login-container
+      div  class='alert alert-warning alert-dismissible' style='margin:20px 0 20px 0;padding:0px;border:0px'
+        = flash[:notice]
       h1 Sign in
       = form_tag(sessions_path) do
         = label_tag :user_name

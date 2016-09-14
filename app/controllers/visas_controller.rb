@@ -1,4 +1,6 @@
 class VisasController < ApplicationController
+  before_action :check_access_domain, except: [:search]
+  
   def index
   end
 

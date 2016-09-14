@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :check_access_domain, exept: [:new, :create]
+                                    
   def index
     @messages = Message.where('already_read = ?', 0)
   end

@@ -1,4 +1,7 @@
 class ApplicantsController < ApplicationController
+  before_action :check_access_domain
+
+  
   def index
     @applicants = Applicant.all.order('created_at asc')
   end

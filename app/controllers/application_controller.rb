@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :check_access_domain
-  
   rescue_from(ActiveRecord::RecordInvalid) {|e| @e = e.record.errors.full_messages.join("<br>"); render 'shared/bootbox.js.erb' }
   rescue_from(PageNotFoundError, with: :error_404)
   rescue_from(ActiveRecord::RecordNotFound, with: :error_404)
@@ -22,6 +20,12 @@ class ApplicationController < ActionController::Base
   
   #check if staff access corresponds to his domain
   def check_access_domain
-    raise PageNotFoundError unless AccessDomain.domain_ok?(current_staff.domain, params[:controller], params[:action])
+    if current_staff.nil?
+      flash[:notice] = 'Sign in first'
+      redirect_to new_session_path
+    elsif ! AccessDomain.domain_ok?(current_staff.domain, params[:controller], params[:action])
+      logger.warn('DOMAIN NG')
+      raise PageNotFoundError
+    end
   end
 end

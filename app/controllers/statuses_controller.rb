@@ -1,4 +1,6 @@
 class StatusesController < ApplicationController
+  before_action :check_access_domain
+  
   def create
     visa = Visa.find(status_params[:visa_id])
     if status_params[:success]
