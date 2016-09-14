@@ -23,7 +23,7 @@
 	<td colspan="5" style="text-align:left;">
 	  <div style="border:1px solid #5AB3AD;padding:30px">
 	  <% visa.history_statuses.each do |status| %>
-	    <p><%= status.status_name %>,   <%= status.note %>,  <%= status.created_at.strftime('%y/%m/%d') %></p>
+	    <p><%= status.status_name %>,   <%= status.note %>,  <%= status.created_at.strftime('%Y/%m/%d') %></p>
 	  <% end %>
 	  <h5><i class="fa fa-question-circle-o"></i>Has a problem? Please tell us. <%= link_to 'send a message to use', new_message_path(applicant: visa.applicant) %></h5>
 	</td>

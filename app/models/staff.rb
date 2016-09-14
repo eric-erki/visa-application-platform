@@ -5,5 +5,22 @@ class Staff < ActiveRecord::Base
   
   validates :name, presence: true
   validates :user_name, uniqueness: true, presence: true
-  validates :password, length: { minimum: 6 }
+  validate :valid_password_update, on: :update
+  validate :valid_password_create, on: :create
+
+  def valid_password_update
+    if password.present?
+      if password.length < 6
+        errors.add(:password, 'is too short')
+      end
+    end
+  end
+
+  def valid_password_create
+    if password.blank?
+      errors.add(:password, "can't be blank")
+    else
+      errors.add(:password, 'is too short') if password.length < 6
+    end
+  end
 end

@@ -18,7 +18,7 @@ class Visa < ActiveRecord::Base
   end
 
   def history_statuses
-    statuses.order('created_at asc')
+    statuses.order('status_code asc')
   end
   
   def visa_type_name

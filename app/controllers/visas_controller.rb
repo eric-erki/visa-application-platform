@@ -22,12 +22,11 @@ class VisasController < ApplicationController
   end
 
   def create
-    applicant = Applicant.where('passport_number = ?', visa_params[:passport_number]).last
+    applicant = Applicant.where('passport_number = ?', visa_params[:passport_number].upcase).last
     visa = Visa.new
     visa.applicant_id = applicant.id
     visa.country_abbr = visa_params[:country_abbr]
     visa.visa_type = visa_params[:type]
-    visa.staff_id = current_staff.id
     visa.save!
     status = Status.new(status_code: 0, visa_id: visa.id, staff_id: current_staff.id)
     status.save!
@@ -43,6 +42,7 @@ class VisasController < ApplicationController
     visa = Visa.find(params[:id])
     current_staff.corporate.own?(visa: visa)
     visa.destroy
+    redirect_to action: 'management'
   end
   
   def set_visa_type_options

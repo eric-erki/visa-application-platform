@@ -41,7 +41,7 @@ table#visa_management_table class="table"
         td colspan="10" style="text-align:left"
           div style="border:1px solid #5AB3AD;padding:30px"
             - visa.history_statuses.each do |status|
-              p  #{status.status_name} ,   #{status.created_at.strftime("%y/%d/%m")},    updated by #{status.staff.try(:name)}
+              p  #{status.status_name} ,   #{status.created_at.strftime("%Y/%m/%d")},    updated by #{status.staff.try(:name)}
 
 
 javascript:

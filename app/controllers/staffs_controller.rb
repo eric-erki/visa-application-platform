@@ -9,6 +9,11 @@ class StaffsController < ApplicationController
   end
 
   def create
+    staff = Staff.new(staff_params)
+    staff.corporate_id = current_staff.corporate_id
+    staff.save!
+    @m = 'Created successfully'
+    render 'bootbox.js.erb'
   end
   
   def edit
@@ -16,15 +21,17 @@ class StaffsController < ApplicationController
 
   def update
     staff = Staff.find(params[:id])
-    if params[:password]
-      unless staff_params[:password] == staff_params[:password_confirmation]
-        raise ActiveRecord::RecordInvalid, 'passport and passport confirmation are not the same'
-      else
-        staff.password_digest = BCrypt::Password.create(staff_params[:password], cost: 5)
-      end
-      staff.name = staff_params[:name]
-      staff.save!
+    current_staff.corporate.own?(staff)
+    if staff_params[:password].present?
+      staff.password = staff_params[:password]
+      staff.password_confirmation = staff_params[:password_confirmation]
+      staff.password_digest = BCrypt::Password.create(staff_params[:password], cost: 5)
     end
+    staff.name = staff_params[:name]
+    p staff
+    staff.save!
+    @m = 'Updated successfully'
+    render 'bootbox.js.erb'
   end
 
   def destroy
@@ -34,6 +41,6 @@ class StaffsController < ApplicationController
   end
 
   def staff_params
-    params.require(:staff).permit(:password, :password_confirmation, :name, :user_name)
+    params.require(:staff).permit(:password, :password_confirmation, :name, :user_name, :domain)
   end
 end

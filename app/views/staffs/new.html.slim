@@ -17,10 +17,12 @@
       = form_for(:staff, url: staffs_path, remote: true) do |f|
         = f.label :user_name
         = f.text_field :user_name, class: 'form-control'
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
         = f.label :password
-        = f.text_field :password, class: 'form-control'
+        = f.password_field :password, class: 'form-control'
         = f.label :password_confirmation
-        = f.text_field :password_confirmation, class: 'form-control'
+        = f.password_field :password_confirmation, class: 'form-control'
         = f.label :domain
         = f.select(:domain, ['staff', 'manager'], {}, class: 'form-control')
         <br>
