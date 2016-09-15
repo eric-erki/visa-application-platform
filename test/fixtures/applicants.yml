@@ -3,12 +3,12 @@
 one:
   id: 0
   name: 'YIWEN GONG'
-  passport_number: 'E28108903'
-  phone_number: '13862965504'
+  passport_number: 'E28100000'
+  phone_number: '13800000000'
   mail_address: 'zuimeng1995@gmail.com'
 
 two:
   name: 'MOMOKO GONG'
-  passport_number: 'E28108904'
-  phone_number: '13862965504'
+  passport_number: 'E28100001'
+  phone_number: '13800000000'
   mail_address: 'zuimeng1995@gmail.com'

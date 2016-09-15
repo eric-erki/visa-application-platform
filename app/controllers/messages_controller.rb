@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :check_access_domain, exept: [:new, :create]
+  before_action :check_access_domain, except: [:new, :create]
                                     
   def index
     @messages = Message.where('already_read = ?', 0)
@@ -12,10 +12,10 @@ class MessagesController < ApplicationController
   def create
     message = Message.new(message_params)
     message.already_read = 0
-    if m.save
-      @message = "The message has been sent successfully"
+    if message.save
+      @m = "The message has been sent successfully"
     else
-      @message = "Something wrong hapeened, please try again"
+      @m = "Something wrong hapeened, please try again"
     end
     render 'bootbox.js.erb'
   end
