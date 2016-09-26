@@ -31,6 +31,7 @@ class ApplicantsController < ApplicationController
   def destroy
     applicant = Applicant.find(params[:id])
     applicant.destroy
+    redirect_to applicants_path
   end
 
   private
