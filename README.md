@@ -1,11 +1,16 @@
 ### Description
 This is a university homework assignment for software engineering class. This course require us to make a website for both travel agencies and applicants. Travel Agencies can do CRUD resources, visa applicant can only read visa and its status, create new message travel agency. Access control is built inside, multiple companies can use it at the same time.
 
+#### demo
+http://visa-application-platform.herokuapp.com/
+
 ### Environment
 - ruby: 2.2.3p173
 - Rails: 4.2.7.1
 - Development and test database: sqlite 3
 - Production database: pg 0.17.1
+
+[![Build Status](https://travis-ci.org/Adagio-cantabile/visa-application-platform.svg?branch=master)](https://travis-ci.org/Adagio-cantabile/visa-application-platform)
 
 ### How to use this website
 ##### For travel agencies
