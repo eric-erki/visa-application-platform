@@ -28,5 +28,6 @@ class Corporate < ActiveRecord::Base
         raise PageNotFoundErro
       end
     end
+    true
   end
 end
