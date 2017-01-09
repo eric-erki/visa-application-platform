@@ -6,7 +6,7 @@ class Visa < ActiveRecord::Base
 
   validates :country_abbr, presence: true
   validates :visa_type, numericality: true, presence: true
-  validates :applicant_id, presence: true
+  validates :applicant_id, presence: true, uniqueness: true
   validates :note, length: { maximum: 200 }
   
   def successful_process
