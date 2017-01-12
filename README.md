@@ -13,7 +13,7 @@ http://visa-application-platform.herokuapp.com/
 [![Build Status](https://travis-ci.org/Adagio-cantabile/visa-application-platform.svg?branch=master)](https://travis-ci.org/Adagio-cantabile/visa-application-platform)
 
 ### database design
-![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/UML.png "database design")
+<img src="https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/UML.png" height=600 width=600></img>
 
 ### Data Structure
 #### Visa Applying Process
@@ -68,40 +68,51 @@ For most pages with forms, I used slim-template to reduce HTML work.
 
 ### How to use this website
 ##### For travel agencies
-![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/index.png "index page")
+<img src="https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/index.png" height=500 width=400></img>
+
 Click `Travel Agency login` button in Index page
 <br>
-![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/login.png "login page")
+<img src="https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/login.png" height=500 width=650></img>
+
 Use user name: `201392248`, password: `123456` to login. This is an admin user who can use all functionalities
 <br>
-![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/management.png "visa management page")
+<img src="https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/management.png" height=500 width=650></img>
+
 Then comes to visa management page, here you can see all unarchived visa applications,click `create new applicant information`  among the management panel.
 <br>
-![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/new_applicant.png "new applicant page")
+<img src="https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/new_applicant.png" height=500 width=650></img>
+
 Fill in user information, passport number should be unique(Here I only considered Chinese nationality)
 <br>
-![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/new_visa.png "new visa page)
+<img src="https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/new_visa.png" height=500 width=650></img>
+
 Then return to management panel, click `create new visa application`
 Here you need to use passport number that already exits, if not, create a new applicant first. After inputting visa number, applicant information will be show up to check if applicant information is correct.
 <br>
-![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/management_2.png "management page)
+<img src="https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/management_2.png" height=500 width=650></img>
+
 Then return to management panel. If a visa application is in a final step, `success` and `rejected`  button are shown because there are two outcomes for a visa application. If a visa is not pending status, staff/manager can edit that record, but only admin can delete. From the detail panel, histories statuses are shown.
 <br>
-![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/applicant.png "applicant info page)
+<img src="https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/applicant.png" height=500 width=650></img>
+
 Click `view all applicants info`,  staff/manager can create or update applicant information, only admin user can delete it.
 <br>
-![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/staff.png "staff info page")
+<img src="https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/staff.png" height=500 width=650></img>
+
 Return to management panel, Click `manage staffs` panel,  only admin can delete staff. Click `create new staff` button to create a new staff, this is also admin only.
 Return to management panel, click `view all messages`,  this is for handling customer support, if you have already solved customer's problem, click `done with it` button and it won't appear any more.
 <br>
-![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/edit_profile.png "edit profile page")
+<img src="https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/edit_profile.png" height=500 width=650></img>
+
 If you want to edit your account, click button in the right side of header, then click `edit profile`. Considering corporate management of staff series number,  it's not updatable.
 
 #### For visa applicants
-![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/visa_search.png "visa status query page")
+<img src="https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/visa_search.png" height=500 width=650></img>
+
 Logout first, then goes to the homepage, click `visa status query` button. Input name and passport number you just created, all your unarchived visa applications will appear, click `detail` button to see history statuses.
 <br>
-![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/message.png "send message page")
+<img src="https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/message.png" height=500 width=650></img>
+
 Click `send us a message` in detail panel,  check if your information listed was correct, send the message, then the agency will see it and handle it soon.
 
 #### references
