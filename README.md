@@ -12,6 +12,60 @@ http://visa-application-platform.herokuapp.com/
 
 [![Build Status](https://travis-ci.org/Adagio-cantabile/visa-application-platform.svg?branch=master)](https://travis-ci.org/Adagio-cantabile/visa-application-platform)
 
+### database design
+![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/UML.png "database design")
+
+### Data Structure
+#### Visa Applying Process
+For Chinese applicants, different countries may have different application process. For example, applying for traveling visa of united states requires interview, while for traveling visa of Japan doesn't. We need to make a data structure to make sure a certain type of a certain country have corresponding process. 
+
+I designed hash containing `country abbreviation => [type, applying process]`. Here is an example of successful visa application process:
+
+```
+  SUCCESSFUL_VISA =
+    { 'JPN' => [
+        ['Study', Status::PROGRESS_NO_INTERVIEW_SUCCESS],
+        ['Travel(single)', Status::PROGRESS_NO_INTERVIEW_SUCCESS],
+        ['Travel(group)', Status::PROGRESS_NO_INTERVIEW_SUCCESS],
+        ['Travel(5 years)', Status::PROGRESS_NO_INTERVIEW_SUCCESS],
+        ['Visiting Friends', Status::PROGRESS_NO_INTERVIEW_SUCCESS],
+        ['Business', Status::PROGRESS_NO_INTERVIEW_SUCCESS],
+        ['Working', Status::PROGRESS_NO_INTERVIEW_SUCCESS],
+      ],
+      'USA' => [
+        ['Business/Travel', Status::PROGRESS_WITH_INTERVIEW_SUCCESS],
+        ['Student', Status::PROGRESS_WITH_INTERVIEW_SUCCESS],
+        ['Working', Status::PROGRESS_WITH_INTERVIEW_SUCCESS],
+	  ]
+    }
+```
+
+#### Access Control
+Some actions are only able to perform by admin user or manager(like create a new staff). Access rules are written in `lib/access_domain.rb`.
+
+Rules are in the form of `[domain, controller, action]`, these actions are only accessible to specific users.
+
+```
+  DOMAIN_LIST = [
+    ['admin', 'staffs', 'index'],
+    ['admin', 'staffs', 'create'],
+    ['admin', 'staffs', 'delete'],
+    ['admin', 'visas', 'delete'],
+  ]
+```
+
+### Watch Illegal Actions
+
+Error will be raised and recorded into log when an illegal action happens. I use a customized error `PageNotFoundError` here.
+
+Illegal actions such as:
+
+- If someone logged in, then try to access resources of other companies
+- If someone logged in, but not a admin user, then try to access resources only admin can access
+
+### View
+For most pages with forms, I used slim-template to reduce HTML work.
+
 ### How to use this website
 ##### For travel agencies
 ![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/index.png "index page")
@@ -49,14 +103,6 @@ Logout first, then goes to the homepage, click `visa status query` button. Input
 <br>
 ![Alt text](https://github.com/Adagio-cantabile/visa-application-platform/blob/master/images/message.png "send message page")
 Click `send us a message` in detail panel,  check if your information listed was correct, send the message, then the agency will see it and handle it soon.
-
-#### access control
-- If user try to access resources of travel agencies without login,  he/she will be redirected to login page
-- If someone logged in, then try to access resources of other companies, 404 page will show.
-- If someone logged in, but not a admin user, then try to access resources only admin can access, he/she will also get a 404 page.
-
-#### other
-For most pages with forms, I used slim-template to reduce HTML work.
 
 #### references
 Icons are downloaded from:

@@ -25,7 +25,7 @@ class Corporate < ActiveRecord::Base
       status = options[:status]
       unless status.staff.corporate_id == id
         logger.warn('access forbidden')
-        raise PageNotFoundErro
+        raise PageNotFoundError
       end
     end
     true
