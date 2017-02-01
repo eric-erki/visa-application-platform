@@ -30,6 +30,8 @@ class VisasController < ApplicationController
     visa.save!
     status = Status.new(status_code: 0, visa_id: visa.id, staff_id: current_staff.id)
     status.save!
+    #mail will be sent async by sidekiq
+    ApplicantMailer.created(applicant, visa).deliver
     @m = 'created successfully'
   end
 

@@ -3,6 +3,7 @@ class StatusesController < ApplicationController
   
   def create
     visa = Visa.find(status_params[:visa_id])
+    applicant = visa.applicant
     if status_params[:success]
       status = Status.new(visa_id: visa.id, status_code: 5, staff_id: current_staff.id)
       status.save!

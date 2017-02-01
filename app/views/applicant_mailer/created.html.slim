@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+  body
+    p 
+      | Hello 
+      = @applicant.name,
+    p 
+      |   Your visa status is created now, check your information. If you find any information wrong, please send a email to zuimeng1995@gmail.com, we will correct it as soon as possible.
+    br
+    p 
+      | ==============================
+    br
+    p 
+      | Name:
+      = @applicant.name
+      | Passport Number:
+      = @applicant.passport_number
+      | Phone Number:
+      = @applicant.phone_number
+      | Current Status:
+      = @visa.current_status.status_name
+    br
+    p 
+      | ==============================
+    p
+      | Best Wishes,
+    br
+      | XXX
